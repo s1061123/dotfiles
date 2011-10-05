@@ -1,0 +1,42 @@
+
+#echo "Loading $HOME/.zsh/zshoptions"
+# zsh options
+
+# 複数の zsh を同時に使う時など history ファイルに上書きせず追加する
+setopt append_history
+# 指定したコマンド名がなく、ディレクトリ名と一致した場合 cd する
+setopt auto_cd
+# 補完候補が複数ある時に、一覧表示する
+setopt auto_list
+# 補完キー（Tab, Ctrl+I) を連打するだけで順に補完候補を自動で補完する
+setopt auto_menu
+# カッコの対応などを自動的に補完する
+setopt auto_param_keys
+# ディレクトリ名の補完で末尾の / を自動的に付加し、次の補完に備える
+setopt auto_param_slash
+# 最後がディレクトリ名で終わっている場合末尾の / を自動的に取り除く
+#setopt auto_remove_slash
+# シンボリックリンクは実体を追うようになる
+setopt chase_links
+# =command を command のパス名に展開する
+setopt equals
+# Ctrl+S/Ctrl+Q によるフロー制御を使わないようにする
+setopt NO_flow_control
+# ヒストリを呼び出してから実行する間に一旦編集できる状態になる
+setopt hist_verify
+# 内部コマンド jobs の出力をデフォルトで jobs -l にする
+setopt long_list_jobs
+# コマンドラインの引数で --prefix=/usr などの = 以降でも補完できる
+setopt magic_equal_subst
+# 複数のリダイレクトやパイプなど、必要に応じて tee や cat の機能が使われる
+setopt multios
+# 8 ビット目を通すようになり、日本語のファイル名などを見れるようになる
+setopt print_eightbit
+# ファイル名の展開で、辞書順ではなく数値的にソートされるようになる
+#setopt numeric_glob_sort
+# pushd を引数なしで実行した場合 pushd $HOME と見なされる
+#setopt pushd_to_home
+# for, repeat, select, if, function などで簡略文法が使えるようになる
+setopt short_loops
+# ignore EOF
+setopt ignoreeof

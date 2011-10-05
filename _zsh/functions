@@ -1,0 +1,66 @@
+
+functions ltelnet() {
+	if [ $# -eq 1 ]; then
+		telnet localhost $1
+	else 
+		echo "usage: $0 <port>"
+	fi
+}
+
+functions gref() {
+	if [ $# -eq 1 ]; then
+		global -r $1
+	else 
+		echo "usage: $0 <function name>"
+	fi
+}
+
+functions lesf() {
+	if [ $# -eq 1 ]; then
+		less `global $1`
+	else 
+		echo "usage: $0 <function name>"
+	fi
+}
+
+functions lesr() {
+	if [ $# -eq 1 ]; then
+		less `global -r $1`
+	else 
+		echo "usage: $0 <function name>"
+	fi
+}
+
+functions lsps() {
+	case `uname` in 
+	Linux)
+	if [ $# -lt 1 ]; then
+		ps -ef -o pid,user,args
+	else
+		ps -elfF | grep $1
+	fi
+	;;
+	SunOS)
+	if [ $# -lt 1 ]; then
+		ps -efl -o pid,user,args | sort +1 | grep tomhayas
+	else
+		ps -efl -o pid,user,args | sort +1 | grep $1
+	fi
+	;;
+	esac
+}
+
+function allreps() {
+	if [ $# -eq 2 ] ; then
+		echo -n "Is this OK? [y/N]"
+		read yn
+		if [ $yn = "y" ]; then
+			foreach i (`grep $1 * | cut -f1 -d: | uniq`)
+				if [ ! -w $i ]; then 
+					cc_co -nc -f $i
+				fi
+				vim -c ":1,\$s/$1/$2/g" -c "wq" $i
+			end
+		fi
+	fi
+}

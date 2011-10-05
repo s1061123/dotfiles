@@ -1,0 +1,17 @@
+#compdef make
+
+typeset -A opt_args
+local state line args
+
+_arguments '-j+[the number of jobs]:jobs: ' \
+	'-f[makefile filename]:test:_files' \
+	'*::object:->objects' && return 0
+	# '*=LEGOFILTER:file:_files' 
+
+case "$state" in
+objects)
+	_values , 'objects' \
+	'LEGOFILTER[lego filter]:leg obj:_files'
+;;
+esac
+return 1

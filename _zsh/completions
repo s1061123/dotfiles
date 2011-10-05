@@ -1,0 +1,14 @@
+#echo "Loading $HOME/.zsh/completions"
+
+# Complete file/dir name just after command.
+compctl -D -f
+
+# If nothing, complete command name.
+#If no commands, complete environment variable then add '='.
+compctl -C -c -f +-E -q -S '='
+
+#------------------------------------------------------------------------------
+# my setting
+#------------------------------------------------------------------------------
+
+# misc.

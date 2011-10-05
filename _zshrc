@@ -1,0 +1,70 @@
+# .zshrc
+echo "Loading $HOME/.zshrc"
+
+#for history
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=256
+SAVEHIST=512
+if [ $UID = 0 ]; then
+  unset HISTFILE
+  SAVEHIST=0
+fi
+
+unlimit
+limit core 0 
+limit -s
+ZUSERDIR=$HOME/.zsh
+SHELL=zsh
+
+# force to keybind to emacs-like
+bindkey -e
+# bindkey -v  # for vi-like
+
+function zshloadfile() {
+  echo -n "$1, "
+  if [ -f $ZUSERDIR/$1 ]; then
+    source $ZUSERDIR/$1
+  fi
+}
+
+case `uname` in
+NetBSD)
+	path=(~/usr/{bin,sbin} /bin /sbin \
+		/usr/{bin,sbin,X11R6/bin,X11R7/bin,pkg/{,s}bin,games,local/bin})
+	export LD_RUN_PATH="/home/tom/usr/lib:/usr/pkg/lib:/usr/local/lib"
+	export LD_RUN_PATH="${LD_RUN_PATH}:/usr/lib:/usr/X11R6/lib"
+	export EDITOR=vim
+	export VISUAL=${EDITOR}
+	export PAGER=less
+	export LC_CTYPE=ja_JP.eucJP
+	export W3MLANG=ja_JP.kterm
+	# for golang...
+	export GOARCH=amd64
+	export GOBIN=/home/tom/usr/bin
+	export GOOS=netbsd
+	export GOROOT=/home/tom/usr/go
+	;;
+*)
+	;;
+esac
+
+#load other config files
+echo -n "Loading ....."
+zshloadfile "zshoptions"
+zshloadfile "aliases"
+zshloadfile "functions"
+zshloadfile "completions"
+echo "Done."
+
+fpath=(~/.zsh/fun $fpath)
+if [ -f ~/.zsh/fun/* ]; then
+  autoload -U ~/.zsh/fun/*(:t)
+fi
+
+# The following lines were added by compinstall
+
+zstyle :compinstall filename '~${USER}/.zshrc'
+
+autoload -U compinit
+compinit -u
+# End of lines added by compinstall

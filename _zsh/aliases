@@ -1,0 +1,10 @@
+#echo "Loading $HOME/.zsh/aliases"
+
+#alias dir='ls -lF'
+alias vi='vim'
+#alias pwv='cleartool pwv'
+alias cpan-installed='find `perl -e "print \"@INC\""` -name "*.pm" -print'
+alias cpan-uninstall='sudo perl -MExtUtils::Install -MExtUtils::Installed -e "unshift@ARGV,new ExtUtils::Installed;sub a{\@ARGV};uninstall((eval{a->[0]->packlist(a->[1])}||do{require CPAN;a->[0]->packlist(CPAN::Shell->expandany(a->[1])->distribution->base_id=~m/(.*)-[^-]+$/)})->packlist_file,1,a->[2])"'
+
+#export LC_CTYPE=ja_JP.eucJP
+#export W3MLANG=ja_JP.kterm
