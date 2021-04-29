@@ -44,6 +44,17 @@ NetBSD)
 	export GOOS=netbsd
 	export GOROOT=/home/tom/usr/go
 	;;
+Darwin)
+	path=(~/usr/{bin,sbin} /usr/local/bin $path) 
+
+	# for Ocaml
+	export PATH=/Users/tomhayas/ocamlbrew/ocaml-4.00.1/bin:$PATH
+	export OPAMROOT=/Users/tomhayas/ocamlbrew/ocaml-4.00.1/.opam
+	eval `opam config env`
+
+	# for python
+	[[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc
+	;;
 *)
 	;;
 esac
@@ -57,7 +68,7 @@ zshloadfile "completions"
 echo "Done."
 
 fpath=(~/.zsh/fun $fpath)
-if [ -f ~/.zsh/fun/* ]; then
+if [ -d ~/.zsh/fun/ ]; then
   autoload -U ~/.zsh/fun/*(:t)
 fi
 
