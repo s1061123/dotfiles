@@ -7,6 +7,14 @@ functions ltelnet() {
 	fi
 }
 
+functions kuberead() {
+	if [ $# -eq 1 ]; then
+		export KUBECONFIG=`readlink -f $1`
+	else
+		echo "usage: $0 <kubeconfig>"
+	fi
+}
+
 functions gref() {
 	if [ $# -eq 1 ]; then
 		global -r $1
