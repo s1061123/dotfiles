@@ -1,0 +1,8 @@
+#functions
+function kuberead () {
+	if [ $# -ne 1 ]; then
+		echo "kubecon <kubeconfig>"
+		return
+	fi
+	export KUBECONFIG=$(readlink -f $1)
+}
