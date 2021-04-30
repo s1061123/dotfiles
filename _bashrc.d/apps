@@ -1,0 +1,10 @@
+#app specific
+#keychain
+[[ -f $(which keychain 2> /dev/null) ]] && \
+	keychain --nogui --quiet ~/.ssh/id_rsa
+[[ -f $HOME/.keychain/$(hostname)-sh ]] && \
+	source $HOME/.keychain/$(hostname)-sh
+[[ -f $(command -v kubectl) ]] && \
+	source <(kubectl completion bash)
+[[ -f $(command -v oc) ]] && \
+	source <(oc completion bash)

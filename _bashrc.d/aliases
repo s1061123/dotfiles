@@ -1,0 +1,2 @@
+#aliases
+alias gitupstream='git remote add upstream'
