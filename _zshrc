@@ -38,6 +38,10 @@ NetBSD)
 	export PAGER=less
 	export LC_CTYPE=ja_JP.eucJP
 	export W3MLANG=ja_JP.kterm
+	export GOARCH=amd64
+	export GOBIN=/home/tom/usr/bin
+	export GOOS=netbsd
+	export GOROOT=/home/tom/usr/go
 	;;
 Linux)
 	path=(~/usr/{bin,sbin} ~/.local/bin /bin /sbin \
@@ -75,21 +79,18 @@ autoload -U compinit
 compinit -u
 # End of lines added by compinstall
 
-#keychain
-[[ -f $(which keychain 2> /dev/null) ]] && \
-	keychain --nogui --quiet ~/.ssh/id_rsa
-
-[[ -f $HOME/.keychain/$(hostname)-sh ]] && \
-	source $HOME/.keychain/$(hostname)-sh
-
 #unalias run-help
 autoload run-help
 export DOCKER_HOST="unix:///var/run/docker.sock"
 
 #app specific
-if builtin command -v kubectl > /dev/null; then
+#keychain
+[[ -f $(which keychain 2> /dev/null) ]] && \
+	keychain --nogui --quiet ~/.ssh/id_rsa
+[[ -f $HOME/.keychain/$(hostname)-sh ]] && \
+	source $HOME/.keychain/$(hostname)-sh
+#k8s/oc
+[[ -f $(builtin command -v kubectl 2> /dev/null) ]] && \
 	source <(kubectl completion zsh)
-fi
-if builtin command -v oc > /dev/null; then
+[[ -f $(builtin command -v oc 2> /dev/null) ]] && \
 	source <(oc completion zsh)
-fi
