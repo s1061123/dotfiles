@@ -23,14 +23,18 @@ fi
 # environment variables
 [[ -d ${HOME}/usr/bin ]] && \
 	export PATH="~/usr/bin:${PATH}"
+[[ -d ${HOME}/usr/go/bin ]] && \
+	export PATH="~/usr/go/bin:${PATH}"
 [[ -d ${HOME}/.cargo/bin ]] && \
 	export PATH="${HOME}/.cargo/bin:${PATH}"
 [[ -d ${HOME}/.krew/bin ]] && \
 	export PATH="${HOME}/.krew/bin:${PATH}"
 
 export LC_CTYPE=ja_JP.UTF-8
-export GOARCH='amd64'
-export GOPATH='${HOME}/usr/go'
+export GOARCH="amd64"
+export GOPATH="${HOME}/usr/gopath"
+export GOBIN="${HOME}/usr/bin"
+#export GOMODCACHE="${HOME}/.cache/go_mod"
 export PAGER='less'
 export EDITOR='vim'
 export LESS='-j10 --no-init --quit-if-one-screen -i -M -R -W -z-4 -x4'
