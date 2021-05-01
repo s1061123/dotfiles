@@ -10,5 +10,7 @@ alias lsd='ls -d */'
 alias findrpi='arp -a | grep b8:27:eb'
 alias gitupstream='git remote add upstream'
 
+alias dc='docker-compose'
+alias gitupstream='git remote add upstream'
 #export LC_CTYPE=ja_JP.eucJP
 #export W3MLANG=ja_JP.kterm
