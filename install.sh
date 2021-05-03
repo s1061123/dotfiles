@@ -1,14 +1,9 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-#Todo: should be rewrite to easy-to-install
-dir=`pwd`
+dotfiles_dir=$(dirname $(readlink -f $0))
 
-if [ ! -f ~/.zsh ]; then
-	echo "install .zsh"
-	ln -s ${dir}/_zsh ~/.zsh
-fi
-
-if [ ! -f ~/.zshrc ]; then
-	echo "install .zshrc"
-	ln -s ${dir}/_zshrc ~/.zshrc
-fi
+for i in $dotfiles_dir/_*; do
+	filename=$(basename $i | sed -e 's/^_/./g')
+	[[ -e ~/$filename ]] && echo "~/$filename exists, moved to ~/$filename.old" && mv ~/$filename ~/$filename.old
+	[[ ! -e ~/$filename ]] && echo "~/$filename linked" && ln -s $i ~/$filename
+done
