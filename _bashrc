@@ -25,6 +25,8 @@ fi
 	export PATH="~/usr/bin:${PATH}"
 [[ -d ${HOME}/usr/go/bin ]] && \
 	export PATH="~/usr/go/bin:${PATH}"
+[[ -d ${HOME}/.local/bin ]] && \
+	export PATH="~/.local/bin:${PATH}"
 [[ -d ${HOME}/.cargo/bin ]] && \
 	export PATH="${HOME}/.cargo/bin:${PATH}"
 [[ -d ${HOME}/.krew/bin ]] && \
