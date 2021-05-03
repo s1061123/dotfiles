@@ -5,6 +5,11 @@
 # that can't tolerate any output.  So make sure this doesn't display
 # anything or bad things will happen !
 
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
+
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
 # outputting anything in those cases.
@@ -18,14 +23,20 @@ fi
 # environment variables
 [[ -d ${HOME}/usr/bin ]] && \
 	export PATH="${HOME}/usr/bin:${PATH}"
+[[ -d ${HOME}/usr/go/bin ]] && \
+	export PATH="${HOME}/usr/go/bin:${PATH}"
+[[ -d ${HOME}/.local/bin ]] && \
+	export PATH="${HOME}/.local/bin:${PATH}"
 [[ -d ${HOME}/.cargo/bin ]] && \
 	export PATH="${HOME}/.cargo/bin:${PATH}"
 [[ -d ${HOME}/.krew/bin ]] && \
 	export PATH="${HOME}/.krew/bin:${PATH}"
 
 export LC_CTYPE=ja_JP.UTF-8
-export GOARCH='amd64'
-export GOPATH='${HOME}/usr/go'
+export GOARCH="amd64"
+export GOPATH="${HOME}/usr/gopath"
+export GOBIN="${HOME}/usr/bin"
+#export GOMODCACHE="${HOME}/.cache/go_mod"
 export PAGER='less'
 export EDITOR='vim'
 export LESS='-j10 --no-init --quit-if-one-screen -i -M -R -W -z-4 -x4'

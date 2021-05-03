@@ -45,3 +45,5 @@ setopt print_eightbit
 setopt short_loops
 # ignore EOF
 setopt ignoreeof
+#allow tab completion in the middle of a word
+setopt COMPLETE_IN_WORD

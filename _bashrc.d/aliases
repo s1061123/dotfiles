@@ -1,2 +1,8 @@
 #aliases
+alias xlock='xdg-screensaver lock'
 alias gitupstream='git remote add upstream'
+alias go110='export PATH="/home/tohayash/usr/go1.10/bin:${PATH}"'
+alias go111='export PATH="/home/tohayash/usr/go1.11/bin:${PATH}"'
+alias go112='export PATH="/home/tohayash/usr/go1.12/bin:${PATH}"'
+#alias ocdebug='oc debug --image="docker.io/centos/tools:latest" node/'
+alias vi='vim'

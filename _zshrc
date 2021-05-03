@@ -77,6 +77,7 @@ fi
 zstyle :compinstall filename '/users/tomhayas/.zshrc'
 autoload -U compinit
 compinit -u
+autoload -U +X bashcompinit && bashcompinit
 # End of lines added by compinstall
 
 #unalias run-help
