@@ -17,7 +17,7 @@ fi
 
 # environment variables
 [[ -d ${HOME}/usr/bin ]] && \
-	export PATH="~/usr/bin:${PATH}"
+	export PATH="${HOME}/usr/bin:${PATH}"
 [[ -d ${HOME}/.cargo/bin ]] && \
 	export PATH="${HOME}/.cargo/bin:${PATH}"
 [[ -d ${HOME}/.krew/bin ]] && \
