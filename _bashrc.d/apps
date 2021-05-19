@@ -8,3 +8,5 @@
 	source <(kubectl completion bash)
 [[ -f $(command -v oc) ]] && \
 	source <(oc completion bash)
+[[ -f $(command -v packet) ]] && \
+	source <(packet completion bash)

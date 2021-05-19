@@ -1,2 +1,4 @@
 #aliases
 alias gitupstream='git remote add upstream'
+alias packet-get-dev='packet device get -p e35d3e75-a0b4-47be-8810-b62d2b417cec'
+alias packet-get-ssh="packet device get -p e35d3e75-a0b4-47be-8810-b62d2b417cec -j | jq '.[] | {name: .hostname, ip:.ip_addresses[0].address}'"
