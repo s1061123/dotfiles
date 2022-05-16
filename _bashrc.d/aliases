@@ -1,8 +1,8 @@
 #aliases
 alias xlock='xdg-screensaver lock'
 alias gitupstream='git remote add upstream'
-alias packet-get-dev='packet device get -p e35d3e75-a0b4-47be-8810-b62d2b417cec'
-alias packet-get-ssh="packet device get -p e35d3e75-a0b4-47be-8810-b62d2b417cec -j | jq '.[] | {name: .hostname, ip:.ip_addresses[0].address}'"
+alias metal-get-dev='metal device get -p e35d3e75-a0b4-47be-8810-b62d2b417cec'
+alias metal-get-ssh="metal device get -p e35d3e75-a0b4-47be-8810-b62d2b417cec -o json | jq '.[] | {name: .hostname, ip:.ip_addresses[0].address}'"
 alias go110='export PATH="/home/tohayash/usr/go1.10/bin:${PATH}"'
 alias go111='export PATH="/home/tohayash/usr/go1.11/bin:${PATH}"'
 alias go112='export PATH="/home/tohayash/usr/go1.12/bin:${PATH}"'
