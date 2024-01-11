@@ -8,7 +8,11 @@
 	source <(kubectl completion bash)
 [[ -f $(command -v oc) ]] && \
 	source <(oc completion bash)
+[[ -f $(command -v kind) ]] && \
+	source <(kind completion bash)
 [[ -f $(command -v metal) ]] && \
 	source <(metal completion bash)
 [[ -f ~/.cargo/env ]] && \
 	source ~/.cargo/env
+
+source ~/.bashrc.d/task.bash
