@@ -14,5 +14,5 @@
 	source <(metal completion bash)
 [[ -f ~/.cargo/env ]] && \
 	source ~/.cargo/env
-
-source ~/.bashrc.d/task.bash
+[[ -f ~/.bashrc.d/task.bash ]] && \
+	source ~/.bashrc.d/task.bash
