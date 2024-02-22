@@ -16,3 +16,10 @@
 	source ~/.cargo/env
 [[ -f ~/.bashrc.d/task.bash ]] && \
 	source ~/.bashrc.d/task.bash
+
+# Tested kubectl version `v1.23.6`
+# Make all kubectl completion fzf
+command -v fzf >/dev/null 2>&1 && {
+	source <(kubectl completion bash | sed 's#"${requestComp}" 2>/dev/null#"${requestComp}" 2>/dev/null | head -n -1 | fzf  --multi=0 #g')
+	source <(oc completion bash | sed 's#"${requestComp}" 2>/dev/null#"${requestComp}" 2>/dev/null | head -n -1 | fzf  --multi=0 #g')
+}
