@@ -20,6 +20,8 @@
 # Tested kubectl version `v1.23.6`
 # Make all kubectl completion fzf
 command -v fzf >/dev/null 2>&1 && {
+	[[ -f $(command -v kubectl) ]] && \
 	source <(kubectl completion bash | sed 's#"${requestComp}" 2>/dev/null#"${requestComp}" 2>/dev/null | head -n -1 | fzf  --multi=0 #g')
+	[[ -f $(command -v oc) ]] && \
 	source <(oc completion bash | sed 's#"${requestComp}" 2>/dev/null#"${requestComp}" 2>/dev/null | head -n -1 | fzf  --multi=0 #g')
 }
