@@ -1,7 +1,7 @@
 #app specific
 #keychain
 [[ -f $(which keychain 2> /dev/null) ]] && \
-	keychain --nogui --quiet ~/.ssh/id_rsa
+	keychain --nogui --quiet ~/.ssh/id_ed25519
 [[ -f $HOME/.keychain/$(hostname)-sh ]] && \
 	source $HOME/.keychain/$(hostname)-sh
 [[ -f $(command -v kubectl) ]] && \
